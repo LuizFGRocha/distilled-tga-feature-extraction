@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+runs/
+checkpoints/
+encodings/
+figures/
