@@ -13,7 +13,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # Import from the new modular structure
 from models.factory import get_model
 from src.dataset import TGADataset
-from src.evaluation import evaluate_with_bootstrap, evaluate_with_cv, evaluate_with_loo, visualize_1d_fit
+from src.evaluation import evaluate_with_bootstrap, evaluate_with_cv, evaluate_with_loo
 
 def generate_encodings(model, data_loader, device):
     """
@@ -83,8 +83,6 @@ def run_evaluation(args):
             mean_r2, lower_ci, upper_ci = evaluate_with_cv(encodings_scaled, labels)
         elif args.method == 'loo':
             mean_r2, lower_ci, upper_ci = evaluate_with_loo(encodings_scaled, labels)
-
-        visualize_1d_fit(encodings_scaled, labels, split_seed=42)
             
         results.append({
             'Target Property': config['name'],
